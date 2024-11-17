@@ -11,3 +11,8 @@
   display: grid;
   place-content: center;
 }
+
+.appBar {
+  background-color: #07034f;
+  padding: 8px;
+}

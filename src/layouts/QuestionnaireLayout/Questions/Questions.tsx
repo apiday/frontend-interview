@@ -11,9 +11,14 @@ import { useState } from "react";
 interface QuestionsProps {
   questionnaireId: number;
   questions: Question[];
+  isShared: boolean;
 }
 
-const Questions = ({ questionnaireId, questions }: QuestionsProps) => {
+const Questions = ({
+  questionnaireId,
+  questions,
+  isShared,
+}: QuestionsProps) => {
   const [isCopied, setIsCopied] = useState<number>();
   const [isLoading, setIsLoading] = useState<number>();
   const handleCopy = async (questionId: number) => {
@@ -37,20 +42,22 @@ const Questions = ({ questionnaireId, questions }: QuestionsProps) => {
       {questions.map((question) => (
         <div className={styles.card} key={question.id}>
           <div className={styles.cardHead}>
-            <div className={styles.cardLink}>
-              {isCopied && isCopied === question.id ? (
-                <Chip>COPIED</Chip>
-              ) : (
-                //TODO: Implement tooltip to improve UX
-                <IconButton
-                  ariaLabel="share link"
-                  onClick={() => handleCopy(question.id)}
-                  loading={isLoading === question.id}
-                >
-                  <LinkIcon />
-                </IconButton>
-              )}
-            </div>
+            {!isShared && (
+              <div className={styles.cardLink}>
+                {isCopied && isCopied === question.id ? (
+                  <Chip>COPIED</Chip>
+                ) : (
+                  //TODO: Implement tooltip to improve UX
+                  <IconButton
+                    ariaLabel="share link"
+                    onClick={() => handleCopy(question.id)}
+                    loading={isLoading === question.id}
+                  >
+                    <LinkIcon />
+                  </IconButton>
+                )}
+              </div>
+            )}
             <Chip className={styles.status}>{question.status}</Chip>
           </div>
           <h2>{question.text}</h2>
