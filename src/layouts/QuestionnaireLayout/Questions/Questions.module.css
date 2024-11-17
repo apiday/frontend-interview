@@ -27,3 +27,27 @@
   text-transform: capitalize;
   place-self: start;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  font-size: 11px;
+  background-color: #07034f;
+  color: #fff;
+  text-align: center;
+  padding: 6px 0;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 1;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

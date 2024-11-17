@@ -47,14 +47,16 @@ const Questions = ({
                 {isCopied && isCopied === question.id ? (
                   <Chip>COPIED</Chip>
                 ) : (
-                  //TODO: Implement tooltip to improve UX
-                  <IconButton
-                    ariaLabel="share link"
-                    onClick={() => handleCopy(question.id)}
-                    loading={isLoading === question.id}
-                  >
-                    <LinkIcon />
-                  </IconButton>
+                  <div className={styles.tooltip}>
+                    <span className={styles.tooltiptext}>Share Link</span>
+                    <IconButton
+                      ariaLabel="share link"
+                      onClick={() => handleCopy(question.id)}
+                      loading={isLoading === question.id}
+                    >
+                      <LinkIcon />
+                    </IconButton>
+                  </div>
                 )}
               </div>
             )}
