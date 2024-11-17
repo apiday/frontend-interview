@@ -1,13 +1,13 @@
 .root {
-    padding: 2rem;
-    display: grid;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .alert {
-    height: 100vh;
-    display: grid;
-    place-content: center;
+  height: 100vh;
+  display: grid;
+  place-content: center;
 }

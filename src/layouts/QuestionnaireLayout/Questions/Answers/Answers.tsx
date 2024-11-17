@@ -18,6 +18,7 @@ const Answers = ({ question: rawQuestion }: AnswersProps) => {
       }
       return { ...answer, selected, user_text: text };
     });
+    // TODO: Lift the state up
     setQuestion({
       ...question,
       status: answers.some((a) => a.selected) ? "ANSWERED" : "UNANSWERED",

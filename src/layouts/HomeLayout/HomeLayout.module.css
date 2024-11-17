@@ -1,7 +1,46 @@
 .root {
+  background-color: #07034f;
+  color: white;
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.column {
+  display: grid;
+  gap: 2rem;
+  padding: 10px;
+}
+.bold {
+  color: greenyellow;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 600px) {
+  .root {
+    background-color: #07034f;
     padding: 2rem;
     display: grid;
     gap: 2rem;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+  }
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 25%;
+    padding: 10px 10px;
+  }
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {
+    margin: 0 -5px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }

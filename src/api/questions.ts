@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 
 export const loadQuestions = async (questionnaireId: number) => {
   await sleep(1000);
+  //TODO: Allowed questionnaire
   if (questionnaireId !== QUESTIONNAIRE_ID)
     throw Error("Unknown questionnaire.");
+  //TODO: improve this to filter by questionnaireId
   return questions;
 };
 
@@ -30,7 +32,7 @@ export const useQuestions = (questionnaireId: number) => {
 
 export const loadQuestionWithSharingToken = async (
   questionId: number,
-  token: string,
+  token: string
 ) => {
   await sleep(1000);
   if (token != SHARING_TOKEN) throw Error("Wrong token");
