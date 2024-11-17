@@ -16,6 +16,10 @@
   color: greenyellow;
   font-weight: bold;
 }
+.appBar {
+  background-color: #07034f;
+  padding: 8px;
+}
 
 @media only screen and (min-width: 600px) {
   .root {
