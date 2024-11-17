@@ -1,11 +1,8 @@
 import CryptoJS from "crypto-js";
+//TODO: Take the secret from the .env
 
-export const encodeHash = (
-  token: string,
-  formId: number,
-  questionId: number
-) => {
-  const data = { token, formId, questionId };
+export const encodeHash = (token: string, questionId: number) => {
+  const data = { token, questionId };
   const stringifiedData = JSON.stringify(data);
   const encryptedData = CryptoJS.AES.encrypt(
     stringifiedData,
@@ -18,7 +15,7 @@ export const decodeHash = (hash: string) => {
   try {
     const bytes = CryptoJS.AES.decrypt(hash, "your-secret-key");
     const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-    return JSON.parse(decryptedData); // Returns { token,formId, questionId }
+    return JSON.parse(decryptedData); // Returns { token, questionId }
   } catch (error) {
     console.error("Invalid hash", error);
     return null;

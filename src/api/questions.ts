@@ -12,20 +12,52 @@ export const loadQuestions = async (questionnaireId: number) => {
   return questions;
 };
 
-export const useQuestions = (questionnaireId: number) => {
+export const useQuestions = (
+  questionnaireId: number,
+  questionId?: number,
+  token?: string
+) => {
   const [questions, setQuestions] = useState<Question[]>();
   const [error, setError] = useState<string>();
 
   useEffect(() => {
     const load = async () => {
       try {
-        setQuestions(await loadQuestions(questionnaireId));
+        if (questionId && token) {
+          return setQuestions([
+            await loadQuestionWithSharingToken(questionId, token),
+          ]);
+        }
+        return setQuestions(await loadQuestions(questionnaireId));
+      } catch (e) {
+        return setError((e as Error).message);
+      }
+    };
+    void load();
+  }, [questionnaireId]);
+
+  return { questions, error };
+};
+export const useQuestionsWithSharingToken = (
+  questionnaireId: number,
+  questionId: number,
+  token: string
+) => {
+  const [questions, setQuestions] = useState<Question[]>();
+  const [error, setError] = useState<string>();
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        if (questionId && token) {
+          setQuestions([await loadQuestionWithSharingToken(questionId, token)]);
+        }
       } catch (e) {
         setError((e as Error).message);
       }
     };
     void load();
-  }, [questionnaireId]);
+  }, [questionnaireId, questionId, token]);
 
   return { questions, error };
 };

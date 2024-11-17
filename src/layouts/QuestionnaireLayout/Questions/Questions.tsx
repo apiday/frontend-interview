@@ -9,18 +9,19 @@ import { getSharingToken } from "@/api/token";
 import { useState } from "react";
 
 interface QuestionsProps {
+  questionnaireId: number;
   questions: Question[];
 }
 
-const Questions = ({ questions }: QuestionsProps) => {
+const Questions = ({ questionnaireId, questions }: QuestionsProps) => {
   const [isCopied, setIsCopied] = useState<number>();
   const [isLoading, setIsLoading] = useState<number>();
   const handleCopy = async (questionId: number) => {
     try {
       setIsLoading(questionId);
       const sharingToken = await getSharingToken();
-      const hash = await encodeHash(sharingToken, 5, questionId);
-      const url = "http://localhost:3000/auth/" + hash;
+      const hash = await encodeHash(sharingToken, questionId);
+      const url = `http://localhost:3000/questionnaire/${questionnaireId}?hash=${encodeURIComponent(hash)}`;
 
       navigator.clipboard.writeText(url);
 

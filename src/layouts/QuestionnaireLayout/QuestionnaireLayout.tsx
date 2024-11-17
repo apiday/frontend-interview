@@ -1,5 +1,5 @@
 import styles from "./QuestionnaireLayout.module.css";
-import { useQuestions } from "@/api/questions";
+import { useQuestions, useQuestionsWithSharingToken } from "@/api/questions";
 import { Alert } from "@/lib/Alert";
 import { Loader } from "@/lib/Loader";
 import { Button } from "@/lib/Button";
@@ -7,10 +7,21 @@ import { Questions } from "@/layouts/QuestionnaireLayout/Questions";
 
 interface QuestionnaireLayoutProps {
   questionnaireId: number;
+  questionId?: number;
+  token?: string;
 }
 
-const QuestionnaireLayout = ({ questionnaireId }: QuestionnaireLayoutProps) => {
-  const { questions, error } = useQuestions(questionnaireId);
+const QuestionnaireLayout = ({
+  questionnaireId,
+  questionId,
+  token,
+}: QuestionnaireLayoutProps) => {
+  const { questions, error } = useQuestions(
+    questionnaireId,
+    questionId as number,
+    token
+  );
+
   if (error)
     return (
       <main className={styles.alert}>
@@ -31,7 +42,7 @@ const QuestionnaireLayout = ({ questionnaireId }: QuestionnaireLayoutProps) => {
         {/* TODO: Move to component */}
         {/* TODO: Take this title from JSON */}
         <h1>Here is the questionnaire content:</h1>
-        <Questions questions={questions} />
+        <Questions questionnaireId={questionnaireId} questions={questions} />
         <Button
           type="secondary"
           size="small"
