@@ -9,19 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "8.1.0",
     "classnames": "^2.5.1",
+    "crypto-js": "^4.2.0",
     "next": "14.2.11",
     "react": "^18",
-    "react-dom": "^18",
-    "@svgr/webpack": "8.1.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "prettier": "^3.3.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.11",
+    "prettier": "^3.3.3",
     "typescript": "^5"
   }
 }
