@@ -1,99 +1,106 @@
 .root {
-    --card-gap: 0.625rem;
+  --card-gap: 0.625rem;
 
-    display: flex;
-    padding: var(--card-padding, 1.5rem);
-    box-shadow: var(--shadow-100);
-    flex-direction: column;
-    text-decoration: none;
-    background-color: var(--white);
-    border-radius: 0.5rem;
-    transition: box-shadow var(--transition-specs);
+  display: flex;
+  padding: var(--card-padding, 1.5rem);
+  box-shadow: var(--shadow-100);
+  flex-direction: column;
+  text-decoration: none;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  transition: box-shadow var(--transition-specs);
 }
 
 .card {
-    display: grid;
-    grid-template:
-        "chip dateOrIcon" min-content
-        "title title" min-content
-        "subtitle subtitle" auto
-        "footer footer" min-content;
-    column-gap: 0.625rem;
-    min-height: var(--card-min-height, 14rem);
+  max-height: 100px;
+  display: grid;
+  grid-template:
+    "chip dateOrIcon" min-content
+    "title title" min-content
+    "subtitle subtitle" auto
+    "footer footer" min-content;
+  column-gap: 0.625rem;
+  min-height: var(--card-min-height, 14rem);
 }
 
 .clickable:hover,
 a.root:hover {
-    box-shadow: var(--shadow-200);
+  box-shadow: var(--shadow-200);
 }
 
 .clickable:active,
 .clickable:focus-visible,
 a.root:active,
 a.root:focus-visible {
-    box-shadow: var(--shadow-200), inset 0 0 0 0.125rem var(--primary-200);
+  box-shadow:
+    var(--shadow-200),
+    inset 0 0 0 0.125rem var(--primary-200);
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .selected {
-    box-shadow: var(--shadow-100), inset 0 0 0 0.125rem var(--primary-500);
+  box-shadow:
+    var(--shadow-100),
+    inset 0 0 0 0.125rem var(--primary-500);
 }
 
 .selected:hover {
-    box-shadow: var(--shadow-200), inset 0 0 0 0.125rem var(--primary-500);
+  box-shadow:
+    var(--shadow-200),
+    inset 0 0 0 0.125rem var(--primary-500);
 }
 
 .chip {
-    grid-area: chip;
-    place-self: start;
+  grid-area: chip;
+  place-self: start;
 }
 
 .dateOrIcon {
-    grid-area: dateOrIcon;
-    align-self: center;
-    justify-self: end;
+  grid-area: dateOrIcon;
+  align-self: center;
+  justify-self: end;
 }
 
 .date {
-    composes: dateOrIcon;
-    color: var(--black-500);
+  composes: dateOrIcon;
+  color: var(--black-500);
 }
 
 .icon {
-    font-size: 1.5rem;
-    composes: dateOrIcon;
+  font-size: 1.5rem;
+  composes: dateOrIcon;
 }
 
 .title {
-    margin-top: var(--card-gap);
-    grid-area: title;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  margin-top: var(--card-gap);
+  grid-area: title;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .subtitle {
-    composes: label from global;
-    margin-top: var(--card-gap);
-    grid-area: subtitle;
-    color: var(--black-500);
+  composes: label from global;
+  margin-top: var(--card-gap);
+  grid-area: subtitle;
+  color: var(--black-500);
 }
 
 .footer {
-    margin-top: var(--card-gap);
-    grid-area: footer;
+  margin-top: var(--card-gap);
+  grid-area: footer;
 }
 
 .iconChip {
-    background-color: var(--primary-50);
-    color: var(--primary-500);
-    border-radius: 0.5rem;
-    padding: 0.25rem;
-    width: 2rem;
-    height: 2rem;
+  background-color: var(--primary-50);
+  color: var(--primary-500);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  width: 2rem;
+  height: 2rem;
 }
