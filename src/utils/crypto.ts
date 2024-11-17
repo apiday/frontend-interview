@@ -15,7 +15,7 @@ export const decodeHash = (hash: string) => {
   try {
     const bytes = CryptoJS.AES.decrypt(hash, "your-secret-key");
     const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-    return JSON.parse(decryptedData); // Returns { token, questionId }
+    return JSON.parse(decryptedData);
   } catch (error) {
     console.error("Invalid hash", error);
     return null;
