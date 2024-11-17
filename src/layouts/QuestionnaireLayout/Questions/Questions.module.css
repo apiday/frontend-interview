@@ -5,7 +5,7 @@
 
 .card {
   --question-card-padding: 2rem;
-
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   padding: var(--question-card-padding);

@@ -1,6 +1,6 @@
 import styles from "./QuestionnaireCard.module.css";
 import { Card } from "@/lib/Card";
-import { Questionnaire, questions } from "@/data/questions";
+import { Questionnaire } from "@/data/questions";
 import { useEffect, useState } from "react";
 
 const QuestionnaireCard = ({
@@ -21,7 +21,7 @@ const QuestionnaireCard = ({
       href={`/questionnaire/${questionnaire.id}`}
       title={questionnaire.title}
       subtitle={subtitle}
-      footer={`0 / ${questions.length} questions`}
+      footer={`0 / ${questionnaire.questions.length} questions`}
     />
   );
 };

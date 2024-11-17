@@ -1,4 +1,8 @@
-import { Question, ALLOWED_QUESTIONNAIRES, questions } from "@/data/questions";
+import {
+  Question,
+  ALLOWED_QUESTIONNAIRES,
+  questionnaires,
+} from "@/data/questions";
 import { sleep } from "@/api/utils";
 import { SHARING_TOKEN } from "@/data/token";
 import { useEffect, useState } from "react";
@@ -7,6 +11,10 @@ export const loadQuestions = async (questionnaireId: number) => {
   await sleep(1000);
   if (!ALLOWED_QUESTIONNAIRES.includes(questionnaireId))
     throw Error("Unknown questionnaire.");
+  const questionnaire = questionnaires.filter(
+    (questionnaire) => questionnaire.id === questionnaireId
+  );
+  const questions = questionnaire[0].questions || [];
   return questions;
 };
 
@@ -23,7 +31,11 @@ export const useQuestions = (
       try {
         if (questionId && token) {
           return setQuestions([
-            await loadQuestionWithSharingToken(questionId, token),
+            await loadQuestionWithSharingToken(
+              questionnaireId,
+              questionId,
+              token
+            ),
           ]);
         }
         return setQuestions(await loadQuestions(questionnaireId));
@@ -48,7 +60,13 @@ export const useQuestionsWithSharingToken = (
     const load = async () => {
       try {
         if (questionId && token) {
-          setQuestions([await loadQuestionWithSharingToken(questionId, token)]);
+          setQuestions([
+            await loadQuestionWithSharingToken(
+              questionnaireId,
+              questionId,
+              token
+            ),
+          ]);
         }
       } catch (e) {
         setError((e as Error).message);
@@ -61,12 +79,16 @@ export const useQuestionsWithSharingToken = (
 };
 
 export const loadQuestionWithSharingToken = async (
+  questionnaireId: number,
   questionId: number,
   token: string
 ) => {
   await sleep(1000);
   if (token != SHARING_TOKEN) throw Error("Wrong token");
-  const question = questions.find((q) => q.id === questionId);
+  const questionnaire = questionnaires.filter(
+    (questionnaire) => questionnaire.id === questionnaireId
+  );
+  const question = questionnaire[0].questions.find((q) => q.id === questionId);
   if (!question) throw Error("Unknown question.");
   return question;
 };

@@ -57,9 +57,6 @@ const QuestionnaireLayout = ({
         )}
       </div>
       <main className={styles.root}>
-        {/* TODO: Move to component */}
-        {/* TODO: Take this title from JSON */}
-        <h1>Here is the questionnaire content:</h1>
         <Questions
           questionnaireId={questionnaireId}
           questions={questions}
