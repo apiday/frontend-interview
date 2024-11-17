@@ -7,6 +7,13 @@ export interface Answer {
   selected: boolean;
 }
 
+export type Questionnaire = {
+  id: number;
+  title: string;
+  subtitle: string;
+  questions: Question[];
+};
+
 export type Question = {
   id: number;
   index: number;
@@ -17,7 +24,103 @@ export type Question = {
 };
 
 export const QUESTIONNAIRE_ID = 5;
+export const ALLOWED_QUESTIONNAIRES = [1, 2, 3, 4, 5];
 
+export const questionnaires: Questionnaire[] = [
+  {
+    id: 1,
+    title: "Your personal information",
+    subtitle: "Let's know you a little bit better",
+    questions: [
+      {
+        id: 1,
+        index: 1,
+        text: "What is your name?",
+        status: "UNANSWERED",
+        type: "FREE_TEXT",
+        answers: [{ id: 1, text: "", user_text: "", selected: false }],
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "How your users interact with your platform?",
+    subtitle:
+      "Let's discover how the users interact with you platform, where they click, how much time they spend browsing, on which devices",
+    questions: [
+      {
+        id: 1,
+        index: 1,
+        text: "What is your name?",
+        status: "UNANSWERED",
+        type: "FREE_TEXT",
+        answers: [{ id: 1, text: "", user_text: "", selected: false }],
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Top 3 questions to improve your productivity",
+    subtitle:
+      "Your company productivity can be improved by using the latest tools.",
+    questions: [
+      {
+        id: 1,
+        index: 1,
+        text: "What is your name?",
+        status: "UNANSWERED",
+        type: "FREE_TEXT",
+        answers: [{ id: 1, text: "", user_text: "", selected: false }],
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Why testing is important?",
+    subtitle:
+      "Let's discover the testing culture in your company with this quick survey.",
+    questions: [
+      {
+        id: 1,
+        index: 1,
+        text: "What is your name?",
+        status: "UNANSWERED",
+        type: "FREE_TEXT",
+        answers: [{ id: 1, text: "", user_text: "", selected: false }],
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "You are hired!",
+    subtitle: "The most relevant questions to your HR interviews",
+    questions: [
+      {
+        id: 1,
+        index: 1,
+        text: "What is your name?",
+        status: "UNANSWERED",
+        type: "FREE_TEXT",
+        answers: [{ id: 1, text: "", user_text: "", selected: false }],
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "You aren't allowed to this questionnaire",
+    subtitle: "This survey is private and you don't have access",
+    questions: [
+      {
+        id: 1,
+        index: 1,
+        text: "What is your name?",
+        status: "UNANSWERED",
+        type: "FREE_TEXT",
+        answers: [{ id: 1, text: "", user_text: "", selected: false }],
+      },
+    ],
+  },
+];
 export const questions: Question[] = [
   {
     id: 1,

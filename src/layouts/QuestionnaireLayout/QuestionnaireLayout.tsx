@@ -1,5 +1,5 @@
 import styles from "./QuestionnaireLayout.module.css";
-import { useQuestions, useQuestionsWithSharingToken } from "@/api/questions";
+import { useQuestions } from "@/api/questions";
 import { Alert } from "@/lib/Alert";
 import { Loader } from "@/lib/Loader";
 import { Button } from "@/lib/Button";

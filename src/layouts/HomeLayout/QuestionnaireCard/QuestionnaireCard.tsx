@@ -1,14 +1,18 @@
 import styles from "./QuestionnaireCard.module.css";
 import { Card } from "@/lib/Card";
-import { QUESTIONNAIRE_ID, questions } from "@/data/questions";
+import { Questionnaire, QUESTIONNAIRE_ID, questions } from "@/data/questions";
 
-const QuestionnaireCard = () => {
+const QuestionnaireCard = ({
+  questionnaire,
+}: {
+  questionnaire: Questionnaire;
+}) => {
   return (
     <Card
       className={styles.card}
-      href={`/questionnaire/${QUESTIONNAIRE_ID}`}
-      title="My questionnaire"
-      subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      href={`/questionnaire/${questionnaire.id}`}
+      title={questionnaire.title}
+      subtitle={questionnaire.subtitle}
       footer={`0 / ${questions.length} questions`}
     />
   );

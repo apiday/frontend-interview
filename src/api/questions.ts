@@ -1,14 +1,12 @@
-import { Question, QUESTIONNAIRE_ID, questions } from "@/data/questions";
+import { Question, ALLOWED_QUESTIONNAIRES, questions } from "@/data/questions";
 import { sleep } from "@/api/utils";
 import { SHARING_TOKEN } from "@/data/token";
 import { useEffect, useState } from "react";
 
 export const loadQuestions = async (questionnaireId: number) => {
   await sleep(1000);
-  //TODO: Allowed questionnaire
-  if (questionnaireId !== QUESTIONNAIRE_ID)
+  if (!ALLOWED_QUESTIONNAIRES.includes(questionnaireId))
     throw Error("Unknown questionnaire.");
-  //TODO: improve this to filter by questionnaireId
   return questions;
 };
 

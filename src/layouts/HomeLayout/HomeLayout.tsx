@@ -1,5 +1,6 @@
 import styles from "./HomeLayout.module.css";
 import { QuestionnaireCard } from "./QuestionnaireCard";
+import { Questionnaire, questionnaires } from "@/data/questions";
 
 const HomeLayout = () => {
   return (
@@ -12,24 +13,11 @@ const HomeLayout = () => {
       </p>
       <section className={styles.bold}>Your surveys:</section>
       <div className={styles.row}>
-        <div className={styles.column}>
-          <QuestionnaireCard />
-        </div>
-        <div className={styles.column}>
-          <QuestionnaireCard />
-        </div>
-        <div className={styles.column}>
-          <QuestionnaireCard />
-        </div>
-        <div className={styles.column}>
-          <QuestionnaireCard />
-        </div>
-        <div className={styles.column}>
-          <QuestionnaireCard />
-        </div>
-        <div className={styles.column}>
-          <QuestionnaireCard />
-        </div>
+        {questionnaires.map((questionnaire: any) => (
+          <div className={styles.column}>
+            <QuestionnaireCard questionnaire={questionnaire} />
+          </div>
+        ))}
       </div>
     </main>
   );
